@@ -1,7 +1,7 @@
 # Use a high-quality base image with PHP and Composer
 FROM php:8.2-fpm-alpine
 
-# Install essential packages (Nginx, Supervisor, Git, etc.)
+# Install essential packages
 RUN apk update && apk add \
     nginx \
     supervisor \
@@ -11,10 +11,9 @@ RUN apk update && apk add \
     autoconf \
     g++ \
     make \
-    bash \
+    bash
     
 # Install PHP extensions required by Laravel
-# We include pdo_mysql as it works for both MySQL and Postgres drivers
 RUN docker-php-ext-install pdo_mysql opcache
 
 # Set working directory inside the container
