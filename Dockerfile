@@ -29,6 +29,10 @@ COPY . .
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --optimize-autoloader --no-dev
 
+# FIX: RUN MIGRATIONS DURING BUILD (Needed since Shell is disabled on Free Tier)
+# This will create your database tables immediately after installing Composer.
+RUN php artisan migrate --force
+
 # Configure Laravel (key:generate is removed, done via ENV)
 RUN php artisan storage:link
 RUN chown -R www-data:www-data storage bootstrap/cache
@@ -37,7 +41,6 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 EXPOSE 8000
 
 # Copy necessary configuration files
-# These files must be in the 'docker' subdirectory of your repo
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
 COPY docker/supervisord.conf /etc/supervisord.conf
 COPY start.sh /usr/local/bin/start
@@ -46,5 +49,4 @@ COPY start.sh /usr/local/bin/start
 RUN chmod +x /usr/local/bin/start
 
 # Run the startup script with its absolute path
-# This fixes the "start: not found" error
 CMD ["/usr/local/bin/start"]
