@@ -18,7 +18,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer install --optimize-autoloader --no-dev
 
 # Configure Laravel
-RUN php artisan key:generate --force
 RUN php artisan storage:link
 RUN chown -R www-data:www-data storage bootstrap/cache
 
