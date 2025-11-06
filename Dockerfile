@@ -12,6 +12,9 @@ RUN apk update && apk add \
     g++ \
     make \
     bash
+
+# FIX: Create log directories required by supervisor BEFORE it starts
+RUN mkdir -p /var/log/supervisor
     
 # Install PHP extensions required by Laravel
 RUN docker-php-ext-install pdo_mysql opcache
