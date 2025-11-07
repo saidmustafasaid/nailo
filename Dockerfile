@@ -29,12 +29,9 @@ COPY . .
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --optimize-autoloader --no-dev
 
-# FIX: Clear config/cache to force loading of PostgreSQL settings (CRUCIAL FIX)
-RUN php artisan config:clear
-RUN php artisan cache:clear
-
 # FIX: RUN MIGRATIONS DURING BUILD (Needed since Shell is disabled on Free Tier)
 # This will create your database tables immediately after installing Composer.
+# We are removing cache/config clear commands to avoid key availability error.
 RUN php artisan migrate --force
 
 # Configure Laravel (key:generate is removed, done via ENV)
