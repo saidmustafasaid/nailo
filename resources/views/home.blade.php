@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nailo — Recycle & Earn / Piga Picha & Pata Pesa</title>
+  <title>Nailo Smart Company Limited — Recycle & Earn / Piga Picha & Pata Pesa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -19,24 +17,40 @@
       background-color: #f0f2f5;
     }
 
-    /* Language Switcher */
-    .lang-switch {
+    /* === Language Switcher & Admin Button === */
+    .top-controls {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 15px;
+      right: 15px;
       z-index: 1000;
+      display: flex;
+      gap: 10px; /* Space between buttons */
+      align-items: center;
     }
-    .lang-switch button {
-      margin-left: 5px;
+    .top-controls button, .top-controls a {
       border-radius: 20px;
       padding: 5px 15px;
       border: none;
       color: white;
-      background-color: #198754;
       transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
-    .lang-switch button:hover {
+    .lang-btn {
+      background-color: #198754;
+    }
+    .lang-btn:hover {
       background-color: #157347;
+      transform: scale(1.05);
+    }
+    .admin-btn {
+      background-color: #0d6efd; /* Use primary blue for admin access */
+    }
+    .admin-btn:hover {
+      background-color: #0b5ed7;
       transform: scale(1.05);
     }
 
@@ -86,12 +100,31 @@
       transform: scale(1.05);
     }
 
+    /* Contact Links Section */
+    .contact-links {
+      padding: 20px;
+      background-color: #e9ecef;
+      border-radius: 10px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+    .contact-links a {
+      color: #198754;
+      font-weight: 600;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    .contact-links i {
+      font-size: 1.2rem;
+      margin-right: 5px;
+    }
+
     /* Sections */
     .section {
       padding: 80px 20px;
     }
     .section-title {
-      font-weight: 600;
+      font-weight: 700;
       color: #198754;
       text-align: center;
       margin-bottom: 50px;
@@ -115,11 +148,12 @@
       margin-bottom: 15px;
     }
 
+    /* Footer */
     .footer {
       background-color: #198754;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       margin-top: 60px;
     }
 
@@ -132,14 +166,16 @@
   </style>
 </head>
 <body>
-
-  <!-- Language Switcher -->
-  <div class="lang-switch">
-    <button onclick="switchLang('en')">🇬🇧 English</button>
-    <button onclick="switchLang('sw')">🇹🇿 Kiswahili</button>
+    
+  <div class="top-controls">
+    <a href="{{ route('admin.submissions') }}" class="admin-btn">
+      <i class="bi bi-person-lock me-1"></i> 
+      <span data-lang-en="Admin" data-lang-sw="Msimamizi">Admin</span>
+    </a>
+    <button class="lang-btn" onclick="switchLang('en')">🇬🇧 EN</button>
+    <button class="lang-btn" onclick="switchLang('sw')">🇹🇿 SW</button>
   </div>
 
-  <!-- Hero Section -->
   <section class="hero">
     <h1 data-lang-en="Turn Your Plastic Waste into Money" data-lang-sw="Geuza Takataka Zako za Plastiki Kuwa Pesa">Turn Your Plastic Waste into Money</h1>
     <p data-lang-en="Join Nailo in building a cleaner, greener Tanzania by recycling plastics for cash."
@@ -149,54 +185,66 @@
     <a href="#sell" class="btn btn-glow mt-4" data-lang-en="Sell Your Plastics" data-lang-sw="Uza Plastiki Zako">Sell Your Plastics</a>
   </section>
 
-  <!-- About Section -->
+  <section class="container mt-5">
+    <div class="contact-links shadow-sm">
+        <h5 class="mb-3 text-success" data-lang-en="Quick Contact" data-lang-sw="Mawasiliano ya Haraka">Quick Contact</h5>
+        <a href="https://wa.me/255677051932" target="_blank">
+            <i class="bi bi-whatsapp"></i> <span data-lang-en="WhatsApp" data-lang-sw="WhatsApp">WhatsApp</span>
+        </a>
+        <a href="mailto:info@nailosmart.co.tz">
+            <i class="bi bi-envelope"></i> <span data-lang-en="Email" data-lang-sw="Barua Pepe">Email</span>
+        </a>
+        <a href="tel:+255677051932">
+            <i class="bi bi-phone"></i> <span data-lang-en="Call Us" data-lang-sw="Tupigie Simu">Call Us</span>
+        </a>
+    </div>
+  </section>
+
   <section class="section container about">
     <div class="row align-items-center">
       <div class="col-md-6 mb-4">
         <img src="https://images.unsplash.com/photo-1601758124065-27e0b9c9414a?auto=format&fit=crop&w=1200&q=80" alt="Recycling">
       </div>
       <div class="col-md-6">
-        <h2 class="section-title" data-lang-en="About Nailo" data-lang-sw="Kuhusu Nailo">About Nailo</h2>
-        <p data-lang-en="Nailo is a plastic recycling company that empowers individuals and businesses to sell their used plastic bottles and crates for cash. We collect, weigh, and pay instantly at 500 TZS per kilogram."
-           data-lang-sw="Nailo ni kampuni ya kurecycle plastiki inayowawezesha watu na biashara kuuza chupa na plastiki zilizotumika kwa pesa. Tunazikusanya, kuzipima, na kulipa papo hapo Tsh 500 kwa kilo.">
-          Nailo is a plastic recycling company that empowers individuals and businesses to sell their used plastic bottles and crates for cash. We collect, weigh, and pay instantly at 500 TZS per kilogram.
+        <h2 class="section-title" data-lang-en="About Nailo Smart Company Limited" data-lang-sw="Kuhusu Nailo Smart Company Limited">About Nailo Smart Company Limited</h2>
+        <p data-lang-en="Nailo Smart Company Limited empowers individuals and businesses by collecting plastic packaging waste, such as crates and bottle holders, at 500 TZS per kilogram. We collect, weigh, and pay instantly to support a cleaner Tanzania."
+           data-lang-sw="Nailo Smart Company Limited inawawezesha watu na biashara kwa kukusanya takataka za vifungashio vya plastiki, kama vile kreti na vifungo vya chupa, kwa Tsh 500 kwa kilo. Tunakusanya, tunapima, na tunalipa papo hapo kusaidia Tanzania safi.">
+          Nailo Smart Company Limited empowers individuals and businesses by collecting plastic packaging waste, such as crates and bottle holders, at 500 TZS per kilogram. We collect, weigh, and pay instantly to support a cleaner Tanzania.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- How It Works -->
   <section class="section container text-center">
     <h2 class="section-title" data-lang-en="How It Works" data-lang-sw="Jinsi Inavyofanya Kazi">How It Works</h2>
     <div class="row g-4">
       <div class="col-md-4">
         <div class="icon-box">
-          <i class="bi bi-collection"></i>
-          <h5 data-lang-en="Collect" data-lang-sw="Kusanya">Collect</h5>
-          <p data-lang-en="Gather your plastic bottles, crates, and packaging materials."
-             data-lang-sw="Kusanya chupa zako za plastiki, crates na vifungashio.">Gather your plastic bottles, crates, and packaging materials.</p>
+          <i class="bi bi-box-seam"></i>
+          <h5 data-lang-en="Collect Plastic Holders" data-lang-sw="Kusanya Vifungo vya Plastiki">Collect Plastic Holders</h5>
+          <p data-lang-en="Gather plastic crates and packaging materials (not bottles) used for drinks."
+             data-lang-sw="Kusanya kreti za plastiki na vifungashio (sio chupa) vilivyotumika kwa vinywaji.">Gather plastic crates and packaging materials (not bottles) used for drinks.</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="icon-box">
-          <i class="bi bi-wechat"></i>
-          <h5 data-lang-en="Contact Us" data-lang-sw="Wasiliana Nasi">Contact Us</h5>
-          <p data-lang-en="Reach us via the website form or call to schedule a pickup."
-             data-lang-sw="Wasiliana nasi kupitia fomu ya tovuti au simu kupanga pickup.">Reach us via the website form or call to schedule a pickup.</p>
+          <i class="bi bi-chat-dots"></i>
+          <h5 data-lang-en="Submit & Schedule" data-lang-sw="Tuma & Panga Pickup">Submit & Schedule</h5>
+          <p data-lang-en="Submit your details on the form below to schedule a pickup via WhatsApp or call."
+             data-lang-sw="Tuma maelezo yako kwenye fomu hapa chini kupanga muda wa kuchukua kupitia WhatsApp au simu.">Submit your details on the form below to schedule a pickup via WhatsApp or call.</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="icon-box">
-          <i class="bi bi-cash-stack"></i>
-          <h5 data-lang-en="Get Paid" data-lang-sw="Pata Pesa">Get Paid</h5>
-          <p data-lang-en="We weigh your plastics and pay you instantly — 500 TZS per kg."
-             data-lang-sw="Tunapima plastiki zako na tunakulipa papo hapo — Tsh 500 kwa kilo.">We weigh your plastics and pay you instantly — 500 TZS per kg.</p>
+          <i class="bi bi-currency-dollar"></i>
+          <h5 data-lang-en="Get Paid Instantly" data-lang-sw="Pata Pesa Papo Hapo">Get Paid Instantly</h5>
+          <p data-lang-en="We weigh your plastics and pay you instantly 500 TZS per kg."
+             data-lang-sw="Tunapima plastiki zako na tunakulipa papo hapo Tsh 500 kwa kilo.">We weigh your plastics and pay you instantly 500 TZS per kg.</p>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Sell Form -->
+  
   <section id="sell" class="section sell-form bg-light">
     <div class="container">
       <h2 class="section-title" data-lang-en="Sell Your Plastics" data-lang-sw="Uza Plastiki Zako">Sell Your Plastics</h2>
@@ -230,15 +278,46 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <section id="feedback" class="section container">
+    <h2 class="section-title" data-lang-en="User Feedback" data-lang-sw="Maoni ya Mtumiaji">User Feedback</h2>
+    <form action="{{ route('submit.feedback') }}" method="POST" class="mx-auto p-4 bg-white rounded shadow-sm" style="max-width: 600px;">
+      @csrf
+      <p data-lang-en="We value your experience! Share your comments and suggestions below."
+         data-lang-sw="Tunathamini uzoefu wako! Shiriki maoni na mapendekezo yako hapa chini." class="text-center mb-4 text-muted">
+         We value your experience! Share your comments and suggestions below.
+      </p>
+      <div class="mb-3">
+        <label for="feedback_name" data-lang-en="Your Name (optional)" data-lang-sw="Jina lako (hiari)">Your Name (optional)</label>
+        <input type="text" id="feedback_name" name="name" class="form-control" placeholder="Jina lako">
+      </div>
+      <div class="mb-3">
+        <label for="feedback_comment" data-lang-en="Your Feedback" data-lang-sw="Maoni Yako">Your Feedback</label>
+        <textarea id="feedback_comment" name="comment" class="form-control" rows="4" required placeholder="Andika maoni yako..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-100" data-lang-en="Submit Feedback" data-lang-sw="Tuma Maoni">Submit Feedback</button>
+    </form>
+  </section>
+
   <footer class="footer">
-    <p data-lang-en="&copy; {{ date('Y') }} Nailo — Recycling for a Better Tomorrow. All rights reserved."
-       data-lang-sw="&copy; {{ date('Y') }} Nailo — Kurecycle kwa Kesho Bora. Haki zote zimehifadhiwa.">
-      &copy; {{ date('Y') }} Nailo — Recycling for a Better Tomorrow. All rights reserved.
-    </p>
+    <div class="container">
+      <p class="mb-2" data-lang-en="Contact: WhatsApp (+255 677 051 932) | Email: info@nailosmart.co.tz"
+         data-lang-sw="Mawasiliano: WhatsApp (+255 677 051 932) | Barua Pepe: info@nailosmart.co.tz">
+         Contact: WhatsApp (+255 677 051 932) | Email: info@nailosmart.co.tz
+      </p>
+      <p class="mb-0" data-lang-en="&copy; {{ date('Y') }} Nailo Smart Company Limited — Recycling for a Better Tomorrow. All rights reserved."
+         data-lang-sw="&copy; {{ date('Y') }} Nailo Smart Company Limited — Kurecycle kwa Kesho Bora. Haki zote zimehifadhiwa.">
+        &copy; {{ date('Y') }} Nailo Smart Company Limited — Recycling for a Better Tomorrow. All rights reserved.
+      </p>
+    </div>
   </footer>
 
   <script>
+    // Initialize language based on default
+    document.addEventListener('DOMContentLoaded', () => {
+        // Default to Swahili since most users use it
+        switchLang('sw'); 
+    });
+
     function switchLang(lang) {
       document.querySelectorAll('[data-lang-en]').forEach(el => {
         el.innerText = lang === 'en' ? el.dataset.langEn : el.dataset.langSw;

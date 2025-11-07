@@ -11,7 +11,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // 1. Register the 'admin.auth' alias for route protection
+        $middleware->alias([
+            'admin.auth' => \App\Http\Middleware\AdminAuthenticate::class,
+        ]);
+
+        // 2. You can also define global middleware here if needed
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

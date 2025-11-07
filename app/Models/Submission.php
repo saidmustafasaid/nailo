@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PlasticSubmission extends Model
+class Submission extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,6 @@ class PlasticSubmission extends Model
         'phone',
         'location',
         'kilograms',
-        'photo',
+        'photo_path', // Standardized to 'photo_path'
     ];
 }
