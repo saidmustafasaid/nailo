@@ -30,9 +30,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer install --optimize-autoloader --no-dev
 
 # FIX: RUN MIGRATIONS DURING BUILD (Needed since Shell is disabled on Free Tier)
-# This will create your database tables immediately after installing Composer.
-# We are removing cache/config clear commands to avoid key availability error.
 RUN php artisan migrate --force
+
+# FINAL FIX: Cache the configuration and views to prevent runtime 500 errors
+# This ensures the APP_KEY and DB_CONNECTION are locked in before serving requests.
+RUN php artisan config:cache
+RUN php artisan view:cache
 
 # Configure Laravel (key:generate is removed, done via ENV)
 RUN php artisan storage:link
