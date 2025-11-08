@@ -3,10 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
 {
-    protected $fillable = ['name', 'email', 'password'];
+    use Notifiable;
 
-    protected $hidden = ['password'];
+    // Table name (optional if it's 'admins')
+    protected $table = 'admins';
+
+    // Mass assignable attributes
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
+    // Hidden fields for arrays/JSON
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    // Cast attributes
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }
