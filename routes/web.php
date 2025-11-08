@@ -18,27 +18,31 @@ use App\Http\Controllers\Auth\AdminLoginController;
 // PUBLIC ROUTES
 // ----------------------------
 
+// Homepage
 Route::get('/', [NailoController::class, 'index'])->name('home');
 
+// Plastic submissions
 Route::post('/sell-plastics', [NailoController::class, 'storeSubmission'])->name('sell-plastics');
+
+// Feedback
 Route::post('/feedback/submit', [FeedbackController::class, 'submit'])->name('submit.feedback');
 
 // ----------------------------
 // ADMIN AUTH ROUTES
 // ----------------------------
 
-// Show login form
+// Login page
 Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
 
-// Handle login
+// Process login
 Route::post('/login', [AdminLoginController::class, 'login'])->name('login.post');
 
-// Logout (redirects home)
+// Logout (redirect to homepage)
 Route::post('/logout', function (Request $request) {
     Auth::guard('admin')->logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return redirect('/'); // Home page
+    return redirect('/');
 })->name('logout');
 
 // ----------------------------
@@ -47,8 +51,10 @@ Route::post('/logout', function (Request $request) {
 
 Route::middleware(['auth:admin'])->group(function () {
 
+    // Admin dashboard
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 
-    Route::get('/admin/submissions', [AdminController::class, 'index'])
-        ->name('admin.submissions');
+    // Submissions page
+    Route::get('/admin/submissions', [AdminController::class, 'index'])->name('admin.submissions');
+
 });
