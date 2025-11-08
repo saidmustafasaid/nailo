@@ -14,16 +14,18 @@ use App\Http\Controllers\Auth\AdminLoginController;
 |--------------------------------------------------------------------------
 */
 
-// --- PUBLIC ROUTES ---
+// ----------------------------
+// PUBLIC ROUTES
+// ----------------------------
 
-// Homepage
 Route::get('/', [NailoController::class, 'index'])->name('home');
 
-// Submission forms
 Route::post('/sell-plastics', [NailoController::class, 'storeSubmission'])->name('sell-plastics');
 Route::post('/feedback/submit', [FeedbackController::class, 'submit'])->name('submit.feedback');
 
-// --- AUTH ROUTES (Login & Logout) ---
+// ----------------------------
+// ADMIN AUTH ROUTES
+// ----------------------------
 
 // Show login form
 Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
@@ -31,21 +33,22 @@ Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('logi
 // Handle login
 Route::post('/login', [AdminLoginController::class, 'login'])->name('login.post');
 
-// Logout route (works for admin & redirects home)
+// Logout (redirects home)
 Route::post('/logout', function (Request $request) {
-    Auth::logout();
+    Auth::guard('admin')->logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return redirect('/'); // Redirect to home page after logout
+    return redirect('/'); // Home page
 })->name('logout');
 
-// --- ADMIN ROUTES (Protected by middleware) ---
-Route::middleware(['auth', 'admin.auth'])->group(function () {
+// ----------------------------
+// PROTECTED ADMIN ROUTES
+// ----------------------------
 
-    // Admin dashboard
+Route::middleware(['auth:admin'])->group(function () {
+
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 
-    // Admin submissions
-    Route::get('/admin/submissions', [AdminController::class, 'index'])->name('admin.submissions');
-
+    Route::get('/admin/submissions', [AdminController::class, 'index'])
+        ->name('admin.submissions');
 });
