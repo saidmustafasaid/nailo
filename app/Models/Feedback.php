@@ -11,6 +11,6 @@ class Feedback extends Model
 
     protected $fillable = [
         'name',
-        'message', // Standardized to 'message'
+        'comment', // Standardized to 'message'
     ];
 }

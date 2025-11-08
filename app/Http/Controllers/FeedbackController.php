@@ -24,7 +24,7 @@ class FeedbackController extends Controller
         Feedback::create([
             'name' => $request->name,
             // Mapping the 'comment' input to the 'message' database column.
-            'message' => $request->comment, 
+            'comment' => $request->comment, 
         ]);
 
         // 4. Redirect back with a success message
