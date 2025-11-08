@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# Run environment-dependent commands now that ENV is loaded
+# Ensure storage link exists
+php /var/www/html/artisan storage:link || true
+
+# Run Laravel commands safely
 php /var/www/html/artisan config:cache
+php /var/www/html/artisan route:cache
 php /var/www/html/artisan view:cache
 php /var/www/html/artisan migrate --force
 
