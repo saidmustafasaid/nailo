@@ -1,13 +1,10 @@
 #!/bin/bash
+set -e
 
-# Ensure storage link exists
-php /var/www/html/artisan storage:link || true
-
-# Run Laravel commands safely
+# Laravel cache & migrations
 php /var/www/html/artisan config:cache
-php /var/www/html/artisan route:cache
 php /var/www/html/artisan view:cache
 php /var/www/html/artisan migrate --force
 
-# Start Supervisor to manage PHP-FPM and Nginx
+# Start Supervisor (manages Nginx + PHP-FPM)
 exec /usr/bin/supervisord -c /etc/supervisord.conf

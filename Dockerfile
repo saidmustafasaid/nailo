@@ -1,54 +1,51 @@
-# Use a high-quality base image with PHP and Composer
+# Use PHP 8.2 FPM Alpine image
 FROM php:8.2-fpm-alpine
 
 # Install essential packages
-RUN apk update && apk add \
+RUN apk update && apk add --no-cache \
     nginx \
     supervisor \
+    bash \
     curl \
     git \
     libxml2-dev \
     autoconf \
     g++ \
     make \
-    bash \
-    postgresql-dev  # <-- ADDED for Postgres client library
+    postgresql-dev \
+    shadow \
+    unzip \
+    vim \
+    && docker-php-ext-install pdo_pgsql opcache
 
-# FIX: Create log directories required by supervisor BEFORE it starts
-RUN mkdir -p /var/log/supervisor
-    
-# Install PHP extensions required by Laravel
-# FIX: Using pdo_pgsql instead of pdo_mysql
-RUN docker-php-ext-install pdo_pgsql opcache
+# Create log directories
+RUN mkdir -p /var/log/supervisor /var/run/php \
+    && chown -R www-data:www-data /var/log/supervisor /var/run/php
 
-# Set working directory inside the container
+# Set working directory
 WORKDIR /var/www/html
 
-# Copy application files 
+# Copy app files
 COPY . .
 
-# Install Composer dependencies
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --optimize-autoloader --no-dev
 
-# FIX: All ENVIRONMENT-DEPENDENT Artisan commands (migrate, cache) are run via start.sh
+# Set permissions
+RUN chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R ug+w storage bootstrap/cache
 
-# Configure Laravel 
-RUN php artisan storage:link
-RUN chown -R www-data:www-data storage bootstrap/cache
-# FIX 1: Set explicit write permissions for the web user on storage and logs
-RUN chmod -R ug+w storage bootstrap/cache
-
-# Expose port 8000 (Render's default)
+# Expose Render port
 EXPOSE 8000
 
-# Copy necessary configuration files
+# Copy configuration files
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
 COPY docker/supervisord.conf /etc/supervisord.conf
 COPY start.sh /usr/local/bin/start
 
-# Ensure the start script is executable
+# Make start script executable
 RUN chmod +x /usr/local/bin/start
 
-# Run the startup script with its absolute path
+# Default command
 CMD ["/usr/local/bin/start"]
