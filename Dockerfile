@@ -2,7 +2,7 @@
 FROM php:8.2-fpm-alpine
 
 # Install essential packages
-RUN apk update && apk add \
+RUN apk update && apk add --no-cache \
     nginx \
     supervisor \
     curl \
@@ -11,13 +11,14 @@ RUN apk update && apk add \
     autoconf \
     g++ \
     make \
-    bash
+    bash \
+    postgresql-dev  # <-- Added for Postgres support
 
 # FIX: Create log directories required by supervisor BEFORE it starts
 RUN mkdir -p /var/log/supervisor
-    
+
 # Install PHP extensions required by Laravel
-RUN docker-php-ext-install pdo_mysql opcache
+RUN docker-php-ext-install pdo_pgsql opcache
 
 # Set working directory inside the container
 WORKDIR /var/www/html
@@ -29,12 +30,10 @@ COPY . .
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --optimize-autoloader --no-dev
 
-# FIX: All ENVIRONMENT-DEPENDENT Artisan commands (migrate, cache) are REMOVED from here
-# and moved to start.sh. Only non-ENV commands remain below.
-
-# Configure Laravel
+# Configure Laravel storage and cache directories
 RUN php artisan storage:link
 RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
 
 # Expose port 8000 (Render's default)
 EXPOSE 8000
