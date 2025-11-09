@@ -36,7 +36,7 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 RUN chmod -R 775 storage bootstrap/cache
 
 # Expose port 8000 (Render's default)
-EXPOSE 8000
+EXPOSE 10000
 
 # Copy necessary configuration files
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
