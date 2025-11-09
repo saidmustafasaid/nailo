@@ -40,14 +40,14 @@ RUN chmod -R 775 storage bootstrap/cache
 EXPOSE 80 443
 
 # Copy config files
-COPY docker/nginx.conf /etc/nginx/http.d/default.conf
+COPY docker/nginx.conf /etc/nginx/nginx.conf
 COPY docker/supervisord.conf /etc/supervisord.conf
 COPY start.sh /usr/local/bin/start
 
 # Make start script executable
 RUN chmod +x /usr/local/bin/start
 
-# Copy SSL certificates
+# Copy SSL certificates (if any)
 COPY docker/ssl/nginx.crt /etc/nginx/ssl/nginx.crt
 COPY docker/ssl/nginx.key /etc/nginx/ssl/nginx.key
 
