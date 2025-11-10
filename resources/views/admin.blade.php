@@ -69,7 +69,10 @@
                                 <td>{{ $submission->kilograms }} kg</td>
                                 <td>
                                     @if($submission->photo_path)
-                                        <a href="{{ asset('storage/' . $submission->photo_path) }}" target="_blank" class="btn btn-sm btn-info text-white">View</a>
+                                  <a href="{{ route('admin.submissions.show', $submission->id) }}" class="btn btn-primary">
+                                      View
+                                  </a>
+
                                     @else
                                         N/A
                                     @endif
