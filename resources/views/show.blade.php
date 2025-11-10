@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layout.app')
 
 @section('content')
 <h2>Submission Details</h2>
