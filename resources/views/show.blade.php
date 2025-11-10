@@ -1,5 +1,5 @@
-@if($submission->photo && $submission->photo !== 'N/A')
-    <img src="{{ asset('storage/' . $submission->photo) }}" style="max-width: 100%;">
+@if($submission->photo && $submission->photo_path !== 'N/A')
+    <img src="{{ asset('storage/' . $submission->photo_path) }}" style="max-width: 100%;">
 @else
     <p>No photo available.</p>
 @endif
