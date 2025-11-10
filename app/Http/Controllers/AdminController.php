@@ -35,7 +35,8 @@ class AdminController extends Controller
 
     public function showSubmission($id)
     {
-        $submission = \App\Models\PlasticSubmission::findOrFail($id);
+        $submission = \App\Models\Submission::findOrFail($id);
+
 
         return view('show', compact('submission'));
 
