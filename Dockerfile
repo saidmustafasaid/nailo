@@ -24,6 +24,11 @@ RUN docker-php-ext-install pdo_pgsql opcache
 # Set working directory
 WORKDIR /var/www/html
 
+# ====================================================================
+# FIX FOR 502 ERROR: Copy PHP-FPM configuration to set listen address
+# ====================================================================
+COPY docker/zz-fpm-listen.conf /usr/local/etc/php-fpm.d/zz-fpm-listen.conf
+
 # Copy application
 COPY . .
 
