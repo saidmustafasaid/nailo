@@ -37,7 +37,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer install --optimize-autoloader --no-dev
 
 # Set Laravel permissions
-RUN php artisan storage:link || true
+# -----------------------------------------------------------------------------------
+# FIX FOR 404: REMOVED 'RUN php artisan storage:link || true' 
+# The link is now created in start.sh at runtime to ensure it works correctly on Render.
+# -----------------------------------------------------------------------------------
 RUN chown -R www-data:www-data storage bootstrap/cache
 RUN chmod -R 775 storage bootstrap/cache
 

@@ -1,14 +1,13 @@
 #!/bin/bash
 # start.sh - Startup script for Laravel Docker container
 
-# OPTIONAL: Clear and cache config/views here if needed,
-# but temporarily remove the cache commands if 500 persists.
-# php /var/www/html/artisan config:clear
-# php /var/www/html/artisan view:clear
-
-# Ensure permissions are correct
+# Ensure permissions are correct BEFORE running storage:link
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# FIX: Re-create the storage link at runtime to ensure it points correctly
+# to the storage/app/public directory inside the container.
+php /var/www/html/artisan storage:link || true
 
 # Run database migrations
 php /var/www/html/artisan migrate --force
