@@ -54,7 +54,11 @@ Route::middleware(['auth:admin'])->group(function () {
     // Admin dashboard
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 
-    // Submissions page
+    // Submissions list page
     Route::get('/admin/submissions', [AdminController::class, 'index'])->name('admin.submissions');
+
+    // ✅ NEW ROUTE — View a single submission
+    Route::get('/admin/submissions/{id}', [AdminController::class, 'showSubmission'])
+        ->name('admin.submissions.show');
 
 });

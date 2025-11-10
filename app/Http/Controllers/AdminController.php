@@ -32,4 +32,13 @@ class AdminController extends Controller
         // Pass data to the 'admin' Blade view
         return view('admin', compact('submissions', 'feedbacks'));
     }
+
+    public function showSubmission($id)
+    {
+        $submission = \App\Models\PlasticSubmission::findOrFail($id);
+
+        return view('show', compact('submission'));
+
+    }
+
 }
