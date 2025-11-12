@@ -40,45 +40,53 @@
 
     .footer { background-color: #198754; color: white; text-align: center; padding: 25px; margin-top: 60px; }
     .about img { border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 100%; }
+
+    /* Logo */
+    .logo { position: absolute; top: 20px; left: 20px; max-height: 60px; }
   </style>
 </head>
 <body>
 
+  <!-- Logo -->
+  <img src="{{ asset('images/logo.png') }}" alt="Nailo Logo" class="logo">
+
   <!-- Top Controls -->
   <div class="top-controls">
-    <a href="{{ route('admin.submissions') }}" class="admin-btn"><i class="bi bi-person-lock me-1"></i> <span data-lang-en="Admin" data-lang-sw="Msimamizi">Admin</span></a>
+    <a href="{{ route('admin.submissions') }}" class="admin-btn"><i class="bi bi-person-lock me-1"></i> Admin</a>
     <button class="lang-btn" onclick="switchLang('en')">🇬🇧 EN</button>
     <button class="lang-btn" onclick="switchLang('sw')">🇹🇿 SW</button>
   </div>
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1 data-lang-en="Turn Your Plastic Waste into Money" data-lang-sw="Geuza Takataka Zako za Plastiki Kuwa Pesa">Turn Your Plastic Waste into Money</h1>
-    <p data-lang-en="Join Nailo in building a cleaner, greener Tanzania by recycling plastics for cash."
-       data-lang-sw="Jiunge na Nailo kujenga Tanzania safi na kijani kwa kurecycle plastiki na kupata pesa.">
-      Join Nailo in building a cleaner, greener Tanzania by recycling plastics for cash.
-    </p>
-    <a href="#sell" class="btn btn-glow mt-4" data-lang-en="Sell Your Plastics" data-lang-sw="Uza Plastiki Zako">Sell Your Plastics</a>
+    <h1>Smart solution for clean future</h1>
+    <p>Join Nailo in building a cleaner, greener Tanzania by recycling plastics for cash.</p>
+    <a href="#sell" class="btn btn-glow mt-4">Sell Your Plastics</a>
   </section>
 
   <!-- Contact Links Section -->
   <section class="container mt-5">
     <div class="contact-links shadow-sm">
-        <h5 class="mb-3 text-success" data-lang-en="Quick Contact" data-lang-sw="Mawasiliano ya Haraka">Quick Contact</h5>
+        <h5 class="mb-3 text-success">Quick Contact</h5>
 
-        <!-- WhatsApp -->
+        <!-- WhatsApp 1 -->
         <a href="https://wa.me/255627759597" target="_blank">
-            <i class="bi bi-whatsapp"></i> <span data-lang-en="WhatsApp" data-lang-sw="WhatsApp">WhatsApp</span>
+            <i class="bi bi-whatsapp"></i> WhatsApp 1
+        </a>
+
+        <!-- WhatsApp 2 -->
+        <a href="https://wa.me/255798765432" target="_blank">
+            <i class="bi bi-whatsapp"></i> WhatsApp 2
         </a>
 
         <!-- Email -->
         <a href="mailto:Info@NailoSmartcompany.com">
-            <i class="bi bi-envelope"></i> <span data-lang-en="Email" data-lang-sw="Barua Pepe">Email</span>
+            <i class="bi bi-envelope"></i> Email
         </a>
 
         <!-- Phone -->
         <a href="tel:+255627759597">
-            <i class="bi bi-phone"></i> <span data-lang-en="Call Us" data-lang-sw="Tupigie Simu">Call Us</span>
+            <i class="bi bi-phone"></i> Call Us
         </a>
     </div>
   </section>
@@ -90,9 +98,8 @@
         <img src="https://images.unsplash.com/photo-1601758124065-27e0b9c9414a?auto=format&fit=crop&w=1200&q=80" alt="Recycling">
       </div>
       <div class="col-md-6">
-        <h2 class="section-title" data-lang-en="About Nailo Smart Company Limited" data-lang-sw="Kuhusu Nailo Smart Company Limited">About Nailo Smart Company Limited</h2>
-        <p data-lang-en="Nailo Smart Company Limited empowers individuals and businesses by collecting plastic packaging waste, such as crates and bottle holders, at 500 TZS per kilogram. We collect, weigh, and pay instantly to support a cleaner Tanzania."
-           data-lang-sw="Nailo Smart Company Limited inawawezesha watu na biashara kwa kukusanya takataka za vifungashio vya plastiki, kama vile kreti na vifungo vya chupa, kwa Tsh 500 kwa kilo. Tunakusanya, tunapima, na tunalipa papo hapo kusaidia Tanzania safi.">
+        <h2 class="section-title">About Nailo Smart Company Limited</h2>
+        <p>
           Nailo Smart Company Limited empowers individuals and businesses by collecting plastic packaging waste, such as crates and bottle holders, at 500 TZS per kilogram. We collect, weigh, and pay instantly to support a cleaner Tanzania.
         </p>
       </div>
@@ -101,30 +108,27 @@
 
   <!-- How It Works Section -->
   <section class="section container text-center">
-    <h2 class="section-title" data-lang-en="How It Works" data-lang-sw="Jinsi Inavyofanya Kazi">How It Works</h2>
+    <h2 class="section-title">How It Works</h2>
     <div class="row g-4">
       <div class="col-md-4">
         <div class="icon-box">
           <i class="bi bi-box-seam"></i>
-          <h5 data-lang-en="Collect Plastic Holders" data-lang-sw="Kusanya Vifungo vya Plastiki">Collect Plastic Holders</h5>
-          <p data-lang-en="Gather plastic crates and packaging materials (not bottles) used for drinks."
-             data-lang-sw="Kusanya kreti za plastiki na vifungashio (sio chupa) vilivyotumika kwa vinywaji.">Gather plastic crates and packaging materials (not bottles) used for drinks.</p>
+          <h5>Collect Plastic Holders</h5>
+          <p>Gather plastic crates and packaging materials (not bottles) used for drinks.</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="icon-box">
           <i class="bi bi-chat-dots"></i>
-          <h5 data-lang-en="Submit & Schedule" data-lang-sw="Tuma & Panga Pickup">Submit & Schedule</h5>
-          <p data-lang-en="Submit your details on the form below to schedule a pickup via WhatsApp or call."
-             data-lang-sw="Tuma maelezo yako kwenye fomu hapa chini kupanga muda wa kuchukua kupitia WhatsApp au simu.">Submit your details on the form below to schedule a pickup via WhatsApp or call.</p>
+          <h5>Submit & Schedule</h5>
+          <p>Submit your details on the form below to schedule a pickup via WhatsApp or call.</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="icon-box">
           <i class="bi bi-currency-dollar"></i>
-          <h5 data-lang-en="Get Paid Instantly" data-lang-sw="Pata Pesa Papo Hapo">Get Paid Instantly</h5>
-          <p data-lang-en="We weigh your plastics and pay you instantly 500 TZS per kg."
-             data-lang-sw="Tunapima plastiki zako na tunakulipa papo hapo Tsh 500 kwa kilo.">We weigh your plastics and pay you instantly 500 TZS per kg.</p>
+          <h5>Get Paid Instantly</h5>
+          <p>We weigh your plastics and pay you instantly 500 TZS per kg.</p>
         </div>
       </div>
     </div>
@@ -133,81 +137,59 @@
   <!-- Sell Plastics Form -->
   <section id="sell" class="section sell-form bg-light">
     <div class="container">
-      <h2 class="section-title" data-lang-en="Sell Your Plastics" data-lang-sw="Uza Plastiki Zako">Sell Your Plastics</h2>
+      <h2 class="section-title">Sell Your Plastics</h2>
       @if(session('success'))
         <div class="alert alert-success text-center">{{ session('success') }}</div>
       @endif
       <form action="{{ route('sell-plastics') }}" method="POST" class="mx-auto" style="max-width: 600px;">
         @csrf
         <div class="mb-3">
-          <label data-lang-en="Name" data-lang-sw="Jina">Name</label>
-          <input type="text" name="name" class="form-control" placeholder="Your full name / Jina lako" required>
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" placeholder="Your full name" required>
         </div>
         <div class="mb-3">
-          <label data-lang-en="Phone Number" data-lang-sw="Nambari ya Simu">Phone Number</label>
+          <label>Phone Number</label>
           <input type="text" name="phone" class="form-control" placeholder="0712 345 678" required>
         </div>
         <div class="mb-3">
-          <label data-lang-en="Location" data-lang-sw="Eneo lako">Location</label>
+          <label>Location</label>
           <input type="text" name="location" class="form-control" placeholder="Your area or city" required>
         </div>
         <div class="mb-3">
-          <label data-lang-en="Kilograms of Plastic" data-lang-sw="Kilo za Plastiki">Kilograms of Plastic</label>
+          <label>Kilograms of Plastic</label>
           <input type="number" step="0.1" name="kilograms" class="form-control" placeholder="5.5" required>
         </div>
-        <button type="submit" class="btn btn-glow w-100" data-lang-en="Submit" data-lang-sw="Tuma">Submit</button>
+        <button type="submit" class="btn btn-glow w-100">Submit</button>
       </form>
     </div>
   </section>
 
   <!-- User Feedback Form -->
   <section id="feedback" class="section container">
-    <h2 class="section-title" data-lang-en="User Feedback" data-lang-sw="Maoni ya Mtumiaji">User Feedback</h2>
+    <h2 class="section-title">User Feedback</h2>
     <form action="{{ route('submit.feedback') }}" method="POST" class="mx-auto p-4 bg-white rounded shadow-sm" style="max-width: 600px;">
       @csrf
-      <p data-lang-en="We value your experience! Share your comments and suggestions below."
-         data-lang-sw="Tunathamini uzoefu wako! Shiriki maoni na mapendekezo yako hapa chini." class="text-center mb-4 text-muted">
-         We value your experience! Share your comments and suggestions below.
-      </p>
       <div class="mb-3">
-        <label for="feedback_name" data-lang-en="Your Name (optional)" data-lang-sw="Jina lako (hiari)">Your Name (optional)</label>
+        <label for="feedback_name">Your Name (optional)</label>
         <input type="text" id="feedback_name" name="name" class="form-control" placeholder="Jina lako">
       </div>
       <div class="mb-3">
-        <label for="feedback_comment" data-lang-en="Your Feedback" data-lang-sw="Maoni Yako">Your Feedback</label>
-        <textarea id="feedback_comment" name="comment" class="form-control" rows="4" required placeholder="Andika maoni yako..."></textarea>
+        <label for="feedback_comment">Your Feedback</label>
+        <textarea id="feedback_comment" name="comment" class="form-control" rows="4" required placeholder="Write your feedback..."></textarea>
       </div>
-      <button type="submit" class="btn btn-primary w-100" data-lang-en="Submit Feedback" data-lang-sw="Tuma Maoni">Submit Feedback</button>
+      <button type="submit" class="btn btn-primary w-100">Submit Feedback</button>
     </form>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p class="mb-2" data-lang-en="Contact: WhatsApp (+255 627 759 597) | Email: Info@NailoSmartcompany.com"
-         data-lang-sw="Mawasiliano: WhatsApp (+255 627 759 597) | Barua Pepe: Info@NailoSmartcompany.com">
-         Contact: WhatsApp (+255 627 759 597) | Email: Info@NailoSmartcompany.com
-      </p>
-      <p class="mb-0" data-lang-en="&copy; {{ date('Y') }} Nailo Smart Company Limited — Recycling for a Better Tomorrow. All rights reserved."
-         data-lang-sw="&copy; {{ date('Y') }} Nailo Smart Company Limited — Kurecycle kwa Kesho Bora. Haki zote zimehifadhiwa.">
-        &copy; {{ date('Y') }} Nailo Smart Company Limited — Recycling for a Better Tomorrow. All rights reserved.
-      </p>
+      <p class="mb-2">Contact: WhatsApp (+255 627 759 597 / +255 798 765 432) | Email: Info@NailoSmartcompany.com</p>
+      <p class="mb-0">&copy; {{ date('Y') }} Nailo Smart Company Limited — Smart solution for clean future. All rights reserved.</p>
     </div>
   </footer>
 
   <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        switchLang('sw'); // default
-    });
-
-    function switchLang(lang) {
-      document.querySelectorAll('[data-lang-en]').forEach(el => {
-        el.innerText = lang === 'en' ? el.dataset.langEn : el.dataset.langSw;
-      });
-    }
-  </script>
-
 </body>
 </html>
