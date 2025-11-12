@@ -20,8 +20,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $submissions = Submission::orderBy('created_at', 'desc')->get();
-        $feedbacks = Feedback::orderBy('created_at', 'desc')->get();
+        $submissions = Submission::orderBy('created_at', 'asc')->get();
+        $feedbacks = Feedback::orderBy('created_at', 'asc')->get();
 
         return view('admin', compact('submissions', 'feedbacks'));
     }
