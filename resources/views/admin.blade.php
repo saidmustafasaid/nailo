@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nailo Admin Dashboard</title>
-
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; }
         .sidebar { background-color: #198754; color: white; min-height: 100vh; padding-top: 20px; }
@@ -41,14 +39,13 @@
         </form>
     </div>
 
-    <!-- Main Content -->
+    <!-- Content Area -->
     <div class="content flex-grow-1 p-4">
         <h1 class="mb-4 text-primary">Dashboard Overview</h1>
 
         <!-- Plastic Submissions Section -->
         <section id="submissions-section" class="content-section active">
             <h2 class="text-success mb-3">Plastic Submissions ({{ $submissions->count() }})</h2>
-
             <div class="table-responsive">
                 <table class="table table-striped table-hover bg-white rounded shadow-sm">
                     <thead class="card-header">
@@ -57,7 +54,8 @@
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Location</th>
-                            <th>Kilograms</th>
+                            <th>Kgs</th>
+                            <th>Photo</th>
                             <th>Date</th>
                         </tr>
                     </thead>
@@ -69,11 +67,21 @@
                                 <td>{{ $submission->phone }}</td>
                                 <td>{{ $submission->location }}</td>
                                 <td>{{ $submission->kilograms }} kg</td>
+                                <td>
+                                    @if($submission->photo_path)
+                                  <a href="{{ route('admin.submissions.show', $submission->id) }}" class="btn btn-primary">
+                                      View
+                                  </a>
+
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
                                 <td>{{ $submission->created_at->format('M d, H:i') }}</td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">No plastic submissions found.</td>
+                                <td colspan="7" class="text-center">No plastic submissions found.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -84,7 +92,6 @@
         <!-- User Feedback Section -->
         <section id="feedback-section" class="content-section">
             <h2 class="text-success mb-3">User Feedback ({{ $feedbacks->count() }})</h2>
-
             <div class="table-responsive">
                 <table class="table table-striped table-hover bg-white rounded shadow-sm">
                     <thead class="card-header">
@@ -115,7 +122,7 @@
     </div>
 </div>
 
-<!-- Bootstrap JS -->
+<!-- Bootstrap JS & small script -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     const linkSub = document.getElementById('link-submissions');
@@ -123,6 +130,7 @@
     const sectionSub = document.getElementById('submissions-section');
     const sectionFeedback = document.getElementById('feedback-section');
 
+    // Show Plastic Submissions
     linkSub.addEventListener('click', () => {
         sectionSub.classList.add('active');
         sectionFeedback.classList.remove('active');
@@ -130,6 +138,7 @@
         linkFeedback.classList.remove('active');
     });
 
+    // Show User Feedback
     linkFeedback.addEventListener('click', () => {
         sectionFeedback.classList.add('active');
         sectionSub.classList.remove('active');
