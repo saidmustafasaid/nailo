@@ -59,6 +59,7 @@
                             <th>Location</th>
                             <th>Kilograms</th>
                             <th>Date</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,10 +71,17 @@
                                 <td>{{ $submission->location }}</td>
                                 <td>{{ $submission->kilograms }} kg</td>
                                 <td>{{ $submission->created_at->format('M d, H:i') }}</td>
+                                <td>
+                                    <form action="{{ route('admin.submissions.delete', $submission->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this submission?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">No plastic submissions found.</td>
+                                <td colspan="7" class="text-center">No plastic submissions found.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -93,6 +101,7 @@
                             <th>Name</th>
                             <th>Comment</th>
                             <th>Date</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -102,10 +111,17 @@
                                 <td>{{ $feedback->name ?: 'Anonymous' }}</td>
                                 <td>{{ $feedback->comment }}</td>
                                 <td>{{ $feedback->created_at->format('M d, H:i') }}</td>
+                                <td>
+                                    <form action="{{ route('admin.feedback.delete', $feedback->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this feedback?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="text-center">No user feedback found.</td>
+                                <td colspan="5" class="text-center">No user feedback found.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -137,6 +153,5 @@
         linkSub.classList.remove('active');
     });
 </script>
-
 </body>
 </html>

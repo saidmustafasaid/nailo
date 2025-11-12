@@ -65,3 +65,7 @@ Route::middleware(['auth:admin'])->group(function () {
         ->name('admin.submissions.show');
 
 });
+
+Route::delete('/admin/submissions/{id}', [AdminController::class, 'deleteSubmission'])->name('admin.submissions.delete');
+Route::delete('/admin/feedbacks/{id}', [AdminController::class, 'deleteFeedback'])->name('admin.feedback.delete');
+
