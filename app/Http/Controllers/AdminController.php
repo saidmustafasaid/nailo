@@ -37,7 +37,7 @@ class AdminController extends Controller
 
      public function deleteSubmission($id)
     {
-        PlasticSubmission::findOrFail($id)->delete();
+        Submission::findOrFail($id)->delete();
         return redirect()->back()->with('success', 'Submission deleted successfully.');
     }
 
