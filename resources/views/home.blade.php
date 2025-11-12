@@ -18,7 +18,20 @@
     .admin-btn { background-color: #0d6efd; }
     .admin-btn:hover { background-color: #0b5ed7; transform: scale(1.05); }
 
-    .hero { background: linear-gradient(to right, rgba(25, 135, 84, 0.85), rgba(13, 110, 253, 0.85)), url('https://images.unsplash.com/photo-1602163845564-f07f8e8b13e8?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat; height: 100vh; color: white; display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: column; padding: 0 20px; }
+    .hero {
+      background: linear-gradient(to right, rgba(25, 135, 84, 0.85), rgba(13, 110, 253, 0.85)),
+                  url('https://images.unsplash.com/photo-1602163845564-f07f8e8b13e8?auto=format&fit=crop&w=1500&q=80')
+                  center/cover no-repeat;
+      height: 100vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 0 20px;
+      position: relative;
+    }
     .hero h1 { font-size: 3rem; font-weight: 700; animation: fadeInDown 1.5s ease; }
     .hero p { font-size: 1.3rem; margin-top: 15px; animation: fadeInUp 2s ease; }
     @keyframes fadeInDown { from {opacity: 0; transform: translateY(-30px);} to {opacity: 1; transform: translateY(0);} }
@@ -41,14 +54,18 @@
     .footer { background-color: #198754; color: white; text-align: center; padding: 25px; margin-top: 60px; }
     .about img { border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 100%; }
 
-    /* Logo */
-    .logo { position: absolute; top: 20px; left: 20px; width: 30%; max-width: 400px; height: auto; }
+    /* Blended Logo */
+    .hero-logo {
+      max-width: 320px;
+      width: 35%;
+      margin-bottom: 25px;
+      opacity: 0.9;
+      filter: drop-shadow(0 3px 5px rgba(0,0,0,0.3));
+      animation: fadeInDown 1.5s ease;
+    }
   </style>
 </head>
 <body>
-
-  <!-- Logo -->
-  <img src="{{ asset('images/logo.png') }}" alt="Nailo Logo" class="logo">
 
   <!-- Top Controls -->
   <div class="top-controls">
@@ -59,6 +76,7 @@
 
   <!-- Hero Section -->
   <section class="hero">
+    <img src="{{ asset('images/logo.png') }}" alt="Nailo Logo" class="hero-logo">
     <h1>Smart solution for clean future</h1>
     <p>Join Nailo in building a cleaner, greener Tanzania by recycling plastics for cash.</p>
     <a href="#sell" class="btn btn-glow mt-4">Sell Your Plastics</a>
@@ -68,26 +86,10 @@
   <section class="container mt-5">
     <div class="contact-links shadow-sm">
         <h5 class="mb-3 text-success">Quick Contact</h5>
-
-        <!-- WhatsApp 1 -->
-        <a href="https://wa.me/255627759597" target="_blank">
-            <i class="bi bi-whatsapp"></i> WhatsApp 1
-        </a>
-
-        <!-- WhatsApp 2 -->
-        <a href="https://wa.me/255798765432" target="_blank">
-            <i class="bi bi-whatsapp"></i> WhatsApp 2
-        </a>
-
-        <!-- Email -->
-        <a href="mailto:Info@NailoSmartcompany.com">
-            <i class="bi bi-envelope"></i> Email
-        </a>
-
-        <!-- Phone -->
-        <a href="tel:+255627759597">
-            <i class="bi bi-phone"></i> Call Us
-        </a>
+        <a href="https://wa.me/255627759597" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp 1</a>
+        <a href="https://wa.me/255798765432" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp 2</a>
+        <a href="mailto:Info@NailoSmartcompany.com"><i class="bi bi-envelope"></i> Email</a>
+        <a href="tel:+255627759597"><i class="bi bi-phone"></i> Call Us</a>
     </div>
   </section>
 
@@ -164,7 +166,7 @@
     </div>
   </section>
 
-  <!-- User Feedback Form -->
+  <!-- Feedback Section -->
   <section id="feedback" class="section container">
     <h2 class="section-title">User Feedback</h2>
     <form action="{{ route('submit.feedback') }}" method="POST" class="mx-auto p-4 bg-white rounded shadow-sm" style="max-width: 600px;">
@@ -189,7 +191,6 @@
     </div>
   </footer>
 
-  <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
