@@ -21,7 +21,10 @@ use App\Http\Controllers\Auth\AdminLoginController;
 // Homepage
 Route::get('/', [NailoController::class, 'index'])->name('home');
 
-// Plastic submissions
+// Plastic submission form
+Route::get('/sell-plastics', [NailoController::class, 'createSubmission'])->name('submissions.create');
+
+// Handle submission POST
 Route::post('/sell-plastics', [NailoController::class, 'storeSubmission'])->name('sell-plastics');
 
 // Feedback
@@ -57,7 +60,7 @@ Route::middleware(['auth:admin'])->group(function () {
     // Submissions list page
     Route::get('/admin/submissions', [AdminController::class, 'index'])->name('admin.submissions');
 
-    // ✅ NEW ROUTE — View a single submission
+    // View a single submission
     Route::get('/admin/submissions/{id}', [AdminController::class, 'showSubmission'])
         ->name('admin.submissions.show');
 

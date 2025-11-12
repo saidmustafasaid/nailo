@@ -17,6 +17,14 @@ class NailoController extends Controller
     }
 
     /**
+     * Show the plastic submission form.
+     */
+    public function createSubmission(): Response
+    {
+        return response()->view('submissions.create');
+    }
+
+    /**
      * Store a new plastic submission (without photo).
      */
     public function storeSubmission(Request $request): Response
@@ -35,6 +43,8 @@ class NailoController extends Controller
             'kilograms' => $request->kilograms,
         ]);
 
-        return redirect()->route('home')->with('success', 'Thank you! Your plastic submission has been received. We will contact you shortly.');
+        return redirect()
+            ->route('home')
+            ->with('success', 'Thank you! Your plastic submission has been received. We will contact you shortly.');
     }
 }
