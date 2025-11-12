@@ -69,9 +69,9 @@
                                 <td>{{ $submission->kilograms }} kg</td>
                                 <td>
                                     @if($submission->photo_path)
-                                  <a href="{{ route('admin.submissions.show', $submission->id) }}" class="btn btn-primary">
-                                      View
-                                  </a>
+                                <a href="{{ route('admin.submissions.show', $submission->id) }}" class="btn btn-primary">
+                                    View
+                                </a>
 
                                     @else
                                         N/A
