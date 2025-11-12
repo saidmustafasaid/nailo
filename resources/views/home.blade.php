@@ -10,39 +10,125 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background-color: #f0f2f5; }
-    .top-controls { position: fixed; top: 15px; right: 15px; z-index: 1000; display: flex; gap: 10px; align-items: center; }
-    .top-controls button, .top-controls a { border-radius: 20px; padding: 5px 15px; border: none; color: white; text-decoration: none; display: inline-flex; align-items: center; font-size: 0.85rem; font-weight: 600; transition: all 0.3s; }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      overflow-x: hidden; 
+      background-color: #f0f2f5; 
+    }
+
+    /* 🔹 Top Controls */
+    .top-controls { 
+      position: fixed; 
+      top: 15px; 
+      right: 15px; 
+      z-index: 1000; 
+      display: flex; 
+      gap: 10px; 
+      align-items: center; 
+    }
+    .top-controls button, 
+    .top-controls a { 
+      border-radius: 20px; 
+      padding: 5px 15px; 
+      border: none; 
+      color: white; 
+      text-decoration: none; 
+      display: inline-flex; 
+      align-items: center; 
+      font-size: 0.85rem; 
+      font-weight: 600; 
+      transition: all 0.3s; 
+    }
     .lang-btn { background-color: #198754; }
     .lang-btn:hover { background-color: #157347; transform: scale(1.05); }
     .admin-btn { background-color: #0d6efd; }
     .admin-btn:hover { background-color: #0b5ed7; transform: scale(1.05); }
 
-    .hero { background: linear-gradient(to right, rgba(25, 135, 84, 0.85), rgba(13, 110, 253, 0.85)), url('https://images.unsplash.com/photo-1602163845564-f07f8e8b13e8?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat; height: 100vh; color: white; display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: column; padding: 0 20px; }
+    /* 🔹 Hero Section */
+    .hero { 
+      background: linear-gradient(to right, rgba(25, 135, 84, 0.85), rgba(13, 110, 253, 0.85)), 
+                  url('https://images.unsplash.com/photo-1602163845564-f07f8e8b13e8?auto=format&fit=crop&w=1500&q=80') 
+                  center/cover no-repeat; 
+      height: 100vh; 
+      color: white; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center; 
+      flex-direction: column; 
+      padding: 0 20px; 
+    }
     .hero h1 { font-size: 3rem; font-weight: 700; animation: fadeInDown 1.5s ease; }
     .hero p { font-size: 1.3rem; margin-top: 15px; animation: fadeInUp 2s ease; }
+
     @keyframes fadeInDown { from {opacity: 0; transform: translateY(-30px);} to {opacity: 1; transform: translateY(0);} }
     @keyframes fadeInUp { from {opacity: 0; transform: translateY(30px);} to {opacity: 1; transform: translateY(0);} }
 
-    .btn-glow { background-color: #198754; color: white; border: none; padding: 12px 30px; border-radius: 30px; transition: all 0.3s; box-shadow: 0 0 10px rgba(25,135,84,0.5); }
+    /* 🔹 Buttons */
+    .btn-glow { 
+      background-color: #198754; 
+      color: white; 
+      border: none; 
+      padding: 12px 30px; 
+      border-radius: 30px; 
+      transition: all 0.3s; 
+      box-shadow: 0 0 10px rgba(25,135,84,0.5); 
+    }
     .btn-glow:hover { background-color: #157347; transform: scale(1.05); }
 
-    .contact-links { padding: 20px; background-color: #e9ecef; border-radius: 10px; margin-bottom: 50px; text-align: center; }
+    /* 🔹 Contact Section */
+    .contact-links { 
+      padding: 20px; 
+      background-color: #e9ecef; 
+      border-radius: 10px; 
+      margin-bottom: 50px; 
+      text-align: center; 
+    }
     .contact-links a { color: #198754; font-weight: 600; margin: 0 15px; text-decoration: none; }
     .contact-links i { font-size: 1.2rem; margin-right: 5px; }
 
+    /* 🔹 Sections */
     .section { padding: 80px 20px; }
     .section-title { font-weight: 700; color: #198754; text-align: center; margin-bottom: 50px; }
 
-    .icon-box { text-align: center; padding: 20px; transition: transform 0.3s, box-shadow 0.3s; border-radius: 15px; background-color: white; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+    /* 🔹 Icon boxes */
+    .icon-box { 
+      text-align: center; 
+      padding: 20px; 
+      transition: transform 0.3s, box-shadow 0.3s; 
+      border-radius: 15px; 
+      background-color: white; 
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1); 
+    }
     .icon-box:hover { transform: translateY(-10px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
     .icon-box i { font-size: 3rem; color: #198754; margin-bottom: 15px; }
 
-    .footer { background-color: #198754; color: white; text-align: center; padding: 25px; margin-top: 60px; }
-    .about img { border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 100%; }
+    /* 🔹 Footer */
+    .footer { 
+      background-color: #198754; 
+      color: white; 
+      text-align: center; 
+      padding: 25px; 
+      margin-top: 60px; 
+    }
 
-    /* Logo */
-    .logo { position: absolute; top: 20px; left: 20px; max-height: 60px; }
+    /* 🔹 About section image */
+    .about img { 
+      border-radius: 20px; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+      max-width: 100%; 
+    }
+
+    /* 🔹 Logo — enlarged to cover ~30% of top section */
+    .logo {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      max-height: 30vh; /* 30% of the top section */
+      width: auto;
+      z-index: 1100;
+    }
   </style>
 </head>
 <body>
@@ -69,22 +155,18 @@
     <div class="contact-links shadow-sm">
         <h5 class="mb-3 text-success">Quick Contact</h5>
 
-        <!-- WhatsApp 1 -->
         <a href="https://wa.me/255627759597" target="_blank">
             <i class="bi bi-whatsapp"></i> WhatsApp 1
         </a>
 
-        <!-- WhatsApp 2 -->
         <a href="https://wa.me/255798765432" target="_blank">
             <i class="bi bi-whatsapp"></i> WhatsApp 2
         </a>
 
-        <!-- Email -->
         <a href="mailto:Info@NailoSmartcompany.com">
             <i class="bi bi-envelope"></i> Email
         </a>
 
-        <!-- Phone -->
         <a href="tel:+255627759597">
             <i class="bi bi-phone"></i> Call Us
         </a>
