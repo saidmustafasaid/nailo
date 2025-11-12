@@ -41,51 +41,57 @@
     .footer { background-color: #198754; color: white; text-align: center; padding: 25px; margin-top: 60px; }
     .about img { border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 100%; }
 
-    /* Updated Logo styling for hero section */
-    .hero-logo { 
-      max-width: 300px; /* Adjust as needed */
-      height: auto;
-      margin-bottom: 20px; /* Space between logo and paragraph */
-      animation: fadeInDown 1.5s ease; /* Keep the animation */
-    }
+    /* Logo */
+    .logo { position: absolute; top: 20px; left: 20px; max-height: 60px; }
   </style>
 </head>
 <body>
 
+  <!-- Logo -->
+  <img src="{{ asset('images/logo.png') }}" alt="Nailo Logo" class="logo">
+
+  <!-- Top Controls -->
   <div class="top-controls">
     <a href="{{ route('admin.submissions') }}" class="admin-btn"><i class="bi bi-person-lock me-1"></i> Admin</a>
     <button class="lang-btn" onclick="switchLang('en')">🇬🇧 EN</button>
     <button class="lang-btn" onclick="switchLang('sw')">🇹🇿 SW</button>
   </div>
 
+  <!-- Hero Section -->
   <section class="hero">
-    <img src="https://i.imgur.com/your-logo-path-here.png" alt="Nailo Smart Company Logo" class="hero-logo"> 
+    <h1>Smart solution for clean future</h1>
     <p>Join Nailo in building a cleaner, greener Tanzania by recycling plastics for cash.</p>
     <a href="#sell" class="btn btn-glow mt-4">Sell Your Plastics</a>
   </section>
 
+  <!-- Contact Links Section -->
   <section class="container mt-5">
     <div class="contact-links shadow-sm">
         <h5 class="mb-3 text-success">Quick Contact</h5>
 
+        <!-- WhatsApp 1 -->
         <a href="https://wa.me/255627759597" target="_blank">
             <i class="bi bi-whatsapp"></i> WhatsApp 1
         </a>
 
+        <!-- WhatsApp 2 -->
         <a href="https://wa.me/255798765432" target="_blank">
             <i class="bi bi-whatsapp"></i> WhatsApp 2
         </a>
 
+        <!-- Email -->
         <a href="mailto:Info@NailoSmartcompany.com">
             <i class="bi bi-envelope"></i> Email
         </a>
 
+        <!-- Phone -->
         <a href="tel:+255627759597">
             <i class="bi bi-phone"></i> Call Us
         </a>
     </div>
   </section>
 
+  <!-- About Section -->
   <section class="section container about">
     <div class="row align-items-center">
       <div class="col-md-6 mb-4">
@@ -100,6 +106,7 @@
     </div>
   </section>
 
+  <!-- How It Works Section -->
   <section class="section container text-center">
     <h2 class="section-title">How It Works</h2>
     <div class="row g-4">
@@ -127,6 +134,7 @@
     </div>
   </section>
 
+  <!-- Sell Plastics Form -->
   <section id="sell" class="section sell-form bg-light">
     <div class="container">
       <h2 class="section-title">Sell Your Plastics</h2>
@@ -156,6 +164,7 @@
     </div>
   </section>
 
+  <!-- User Feedback Form -->
   <section id="feedback" class="section container">
     <h2 class="section-title">User Feedback</h2>
     <form action="{{ route('submit.feedback') }}" method="POST" class="mx-auto p-4 bg-white rounded shadow-sm" style="max-width: 600px;">
@@ -172,6 +181,7 @@
     </form>
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <p class="mb-2">Contact: WhatsApp (+255 627 759 597 / +255 798 765 432) | Email: Info@NailoSmartcompany.com</p>
@@ -179,7 +189,7 @@
     </div>
   </footer>
 
+  <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-```http://googleusercontent.com/image_generation_content/1
